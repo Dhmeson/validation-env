@@ -1,0 +1,28 @@
+{
+    "parserOptions": {
+      "ecmaVersion": 2020,
+      "sourceType": "module"
+    },
+    "env": {
+        "jest": true,"es2021": true
+      },
+      
+      	"extends": [		
+		"prettier",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended"
+	],
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "rules": {
+		"quotes": ["error", "single"],
+		"semi": ["error", "always"],
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "camelcase": "error",
+   // "no-unused-vars": "warn",
+    "prefer-const": "error",
+		"no-console": "error"}
+   
+  }
