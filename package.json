@@ -1,47 +1,39 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
-  "private": true,
+  "name": "validation-env",
+  "version": "1.0.7",
+  "description": "Manages the environment variables necessary for the application. Loads environment  variables from the .env file and checks that all required variables are defined.",
+  "main": "main.ts",
+  "icon": "https://camo.githubusercontent.com/a4f8b1a99c71a7e5ef8bd3ec3dc310fbc68fd6138863bc16befdfe4756fafcba/68747470733a2f2f692e696d6775722e636f6d2f426b785368494f2e6a706567",
+  "repository": {"url": "https://github.com/Dhmeson/validation-env"},
   "scripts": {
-    "dev1": "ts-node-dev src/main.ts  --respanw --tranpileOnly --ignore-watch node_modules ",
     "build": "tsc",
-    "build:webpack": "webpack --mode production --stats-error-details",
-    "test": "jest",
     "dev": "tsx watch ./main.ts",
     "start": "node dist/main.js",
-    "prisma": "npx prisma generate",
     "lint": "eslint \"**/*.{ts,tsx}\" --max-warnings=0 --ext .tsm.tsx --fix"
   },
-  "author": "",
-  "license": "ISC",
+   "keywords": [
+    "env-cli",
+    "environment",
+    "validation-env","env-manager","env"
+
+  ],
+  "author": "Dhmeson Noronha Araujo",
+  "license": "MIT",
   "devDependencies": {
-    "@types/cors": "^2.8.13",
-    "@types/express": "^4.17.14",
-    "@types/jest": "^29.1.2",
-    "@types/jsonwebtoken": "^9.0.1",
-    "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "eslint": "^8.47.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "jest": "^29.1.2",
     "prettier": "^3.0.2",
-    "ts-jest": "^29.0.3",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "tsx": "^3.12.7"
+
   },
   "dependencies": {
     "@types/node": "^20.11.25",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.18.2",
-    "firebase": "^9.17.1",
-    "firebase-admin": "^11.9.0",
-    "mongodb": "^6.4.0",
-    "tsx": "^3.12.7",
-    "uuid": "^9.0.0",
-    "zod": "^3.20.2"
+    "dotenv": "^16.4.5"
   }
 }

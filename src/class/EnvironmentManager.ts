@@ -7,7 +7,7 @@ export class EnvironmentManager {
   private requiredVariables: string[] = [];
   private missingVariables: string[];
   /**
-   * 
+   * Add a list of variables that your application needs, when starting the class, it will check if all your variables exist, if not, an error will appear showing which variables should be added
    * @param requiredVariables list of necessary variables.
    * @type {requiredVariables:string[]}
    * @example  const environmentManager = new EnvironmentManager(['API_KEY']);
