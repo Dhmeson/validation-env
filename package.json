@@ -1,6 +1,6 @@
 {
   "name": "validation-env",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Manages the environment variables necessary for the application. Loads environment  variables from the .env file and checks that all required variables are defined.",
   "type": "module",
   "main": "dist/main.js",
