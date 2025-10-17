@@ -1,4 +1,4 @@
 export { loadEnv } from './loader.js';
-export type { Schema, SchemaItem, EnvFromSchema, SupportedKind, LoadOptions } from './types.js';
+export type { EnvSchema, SchemaItem, EnvFromSchema, SupportedKind, LoadOptions } from './types.js';
 
 

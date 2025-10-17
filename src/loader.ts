@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { EnvFromSchema, LoadOptions, Schema } from './types.js';
+import { EnvFromSchema, EnvSchema, LoadOptions } from './types.js';
 import { coerceAndValidate, EnvValidationError } from './validator.js';
 
 function loadDotenv(options?: LoadOptions) {
@@ -8,12 +8,12 @@ function loadDotenv(options?: LoadOptions) {
     dotenv.config({ path, override });
 }
 
-function collectErrors(schema: Schema): never {
+function collectErrors(schema: EnvSchema): never {
     // This function is used only as a type trick; callsites build the errors and throw AggregateError
     throw new Error('collectErrors should not be called directly');
 }
 
-export function loadEnv<TSchema extends Schema>(schema: TSchema, options?: LoadOptions): EnvFromSchema<TSchema> {
+export function loadEnv<TSchema extends EnvSchema>(schema: TSchema, options?: LoadOptions): EnvFromSchema<TSchema> {
     loadDotenv(options);
 
     const errors: Error[] = [];

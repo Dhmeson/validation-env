@@ -39,13 +39,15 @@ Optionally create an `env.schema.ts` file in your project:
 
 ```ts
 // env.schema.ts
-export const envSchema = [
+import { EnvSchema } from 'validation-env';
+
+export const envSchema:EnvSchema = [
   { name: 'PORT', type: 'number' },
   { name: 'NODE_ENV', type: 'string' },
   { name: 'DATABASE_URL', type: 'url' },
   { name: 'API_KEY', type: 'string' },
   { name: 'DEBUG', type: 'boolean', optional: true },
-] as const;
+] 
 ```
 
 In your code:
@@ -128,34 +130,9 @@ try {
   process.exit(1);
 }
 ```
-
-## Tips
-
-- Mark the schema array with `as const` for better type inference.
-- In ESM/TypeScript apps with `module: NodeNext`, use `.js` extensions in compiled imports. When consuming from npm, just `import { loadEnv } from 'validation-env'`.
-
-## API (TypeScript)
-
 ```ts
 type SupportedKind = 'string' | 'number' | 'boolean' | 'email' | 'url'
 
-interface SchemaItem {
-  name: string
-  type: SupportedKind
-  optional?: boolean
-  allowEmpty?: boolean // only for string
-}
-
-type Schema = readonly SchemaItem[]
-
-declare function loadEnv<T extends Schema>(
-  schema: T,
-  options?: { dotenvPath?: string; override?: boolean }
-): {
-  [K in T[number] as K['name']]: K['optional'] extends true
-    ? (K['type'] extends 'number' ? number : K['type'] extends 'boolean' ? boolean : string) | undefined
-    : K['type'] extends 'number' ? number : K['type'] extends 'boolean' ? boolean : string
-}
 ```
 
 ## License

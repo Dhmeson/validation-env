@@ -9,7 +9,7 @@ export interface SchemaItemBase {
 
 export type SchemaItem = SchemaItemBase;
 
-export type Schema = ReadonlyArray<SchemaItem>;
+export type EnvSchema = ReadonlyArray<SchemaItem>;
 
 // Map a kind to its runtime value type
 export type FromKind<K extends SupportedKind> =
@@ -20,7 +20,7 @@ export type FromKind<K extends SupportedKind> =
     K extends 'url' ? string : never;
 
 // Convert a schema definition to a typed env object
-export type EnvFromSchema<TSchema extends Schema> = {
+export type EnvFromSchema<TSchema extends EnvSchema> = {
     [I in TSchema[number] as I['name']]: I['optional'] extends true
         ? FromKind<I['type']> | undefined
         : FromKind<I['type']>

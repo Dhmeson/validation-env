@@ -1,6 +1,6 @@
 {
   "name": "validation-env",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Manages the environment variables necessary for the application. Loads environment  variables from the .env file and checks that all required variables are defined.",
   "type": "module",
   "main": "dist/main.js",
@@ -26,7 +26,7 @@
     "url": "https://github.com/Dhmeson/validation-env"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsup src/main.ts --format esm,cjs --dts --out-dir dist --clean",
     "prepublishOnly": "npm run build"
   },
   "engines": {
@@ -48,6 +48,7 @@
 
   },
   "devDependencies": {
+    "tsup": "^8.0.1",
     "tsx": "^4.16.2",
     "typescript": "^5.9.3",
     "@types/node": "^20.16.13"
