@@ -8,12 +8,17 @@
   "exports": {
     ".": {
       "types": "./dist/main.d.ts",
-      "import": "./dist/main.js"
+      "import": "./dist/main.js",
+      "require": "./dist/main.cjs"
     }
+  
   },
   "files": [
-    "dist",
-    "readme.md"
+    "**/*.js",
+    "**/*.d.ts",
+    "readme.md",
+    "LICENSE",
+    "dist"   
   ],
   "sideEffects": false,
   "icon": "https://res.cloudinary.com/dbhcx7cfh/image/upload/v1760720853/logo.730Z_umnuze.png",

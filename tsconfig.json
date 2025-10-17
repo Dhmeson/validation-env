@@ -1,34 +1,16 @@
 {
   "compilerOptions": {
-    /* === Configurações básicas === */
-    "target": "ES2022",                       // Usa o ES mais recente compatível com Node 22
-    "lib": ["ES2022"],
-    "module": "NodeNext",                     // Necessário para suporte ESM nativo no Node
-    "moduleResolution": "NodeNext",
-    "rootDir": "./src",                       // Mantém a estrutura organizada
+    "rootDir": "./src",
     "outDir": "./dist",
-    "sourceMap": true,
-
-    /* === Melhor compatibilidade === */
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "removeComments": true,
-    "skipLibCheck": true,
-
-    /* === Tipagem e verificação === */
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "declaration": true,
+    "declarationMap": true,
     "strict": true,
-    "noImplicitAny": true,
-
-    /* === Decorators (se usados) === */
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-
-    /* === Node ESM: importante! === */
-   // "allowImportingTsExtensions": true,       // Permite importar arquivos com extensão .ts
-    "moduleDetection": "force"                // Garante modo ESM mesmo sem "type": "module"
+    "skipLibCheck": true,
+    "sourceMap": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules"]
 }
