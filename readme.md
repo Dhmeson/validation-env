@@ -1,18 +1,17 @@
-# Validation-Env
+# validation-env
 
-<img src="https://i.imgur.com/BkxShIO.jpeg" alt="validation-env Logo" width="200"/>
+<img src="https://res.cloudinary.com/dbhcx7cfh/image/upload/v1760720853/logo.730Z_umnuze.png" alt="validation-env Logo" width="200"/>
 
-[![npm version](https://badge.fury.io/js/validation-env.svg)](https://badge.fury.io/js/validation-env)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 
 A powerful and type-safe environment variable manager for Node.js applications with validation, type conversion, and comprehensive error handling.
 
-## Requisitos
+## Requirements
 
 - Node.js >= 20
-- ESM habilitado (este pacote é ESM)
+- ESM enabled (this package is ESM)
 
-## Instalação
+## Installation
 
 ```bash
 npm i validation-env
@@ -20,23 +19,23 @@ npm i validation-env
 yarn add validation-env
 ```
 
-## Conceito
+## Concept
 
-Você define um "schema" das variáveis de ambiente (nome e tipo) e chama `loadEnv(schema)`. A função carrega o `.env` (via `dotenv`), valida, converte os tipos e retorna um objeto tipado de acordo com o schema em tempo de compilação (TypeScript).
+You define a schema of environment variables (name and type) and call `loadEnv(schema)`. The function loads `.env` (via `dotenv`), validates, coerces types, and returns a strongly-typed object based on the schema using TypeScript inference.
 
-### Tipos suportados
+### Supported types
 
 - `string`
 - `number`
-- `boolean` (somente "true"/"false", case-insensitive)
+- `boolean` (only "true"/"false", case-insensitive)
 - `email`
 - `url`
 
-Campos opcionais: defina `optional: true`. Para strings vazias, use `allowEmpty: true`.
+Optional fields: set `optional: true`. For empty strings, use `allowEmpty: true`.
 
-## Uso rápido
+## Quick start
 
-Crie (opcional) um arquivo `env.schema.ts` no seu projeto:
+Optionally create an `env.schema.ts` file in your project:
 
 ```ts
 // env.schema.ts
@@ -49,7 +48,7 @@ export const envSchema = [
 ] as const;
 ```
 
-No seu código:
+In your code:
 
 ```ts
 import { loadEnv } from 'validation-env';
@@ -57,7 +56,7 @@ import { envSchema } from './env.schema';
 
 const env = loadEnv(envSchema);
 
-// Tipagem inferida a partir do schema
+// Types inferred from schema
 // env.PORT: number
 // env.NODE_ENV: string
 // env.DATABASE_URL: string
@@ -65,7 +64,7 @@ const env = loadEnv(envSchema);
 // env.DEBUG?: boolean
 ```
 
-Ou defina o schema inline:
+Or define the schema inline:
 
 ```ts
 import { loadEnv } from 'validation-env';
@@ -79,7 +78,7 @@ const env = loadEnv([
 ] as const);
 ```
 
-## .env de exemplo
+## Example .env
 
 ```env
 PORT=3000
@@ -89,27 +88,27 @@ API_KEY=super-secret
 DEBUG=false
 ```
 
-## Regras de validação
+## Validation rules
 
-- `boolean`: somente "true" ou "false" (case-insensitive). Outros valores geram erro.
-- `number`: valores numéricos (inteiro ou decimal). Infinito/NaN geram erro.
-- `email`: verificação simples (RFC5322-lite).
-- `url`: validada com `new URL(value)`.
-- `string`: por padrão não aceita vazio; para permitir vazio, use `allowEmpty: true`.
-- `optional: true`: a variável pode faltar; quando presente, ainda é validada.
+- `boolean`: only "true" or "false" (case-insensitive). Any other value throws.
+- `number`: numeric values (integer or decimal). Infinite/NaN will throw.
+- `email`: simple RFC5322-lite validation.
+- `url`: validated using `new URL(value)`.
+- `string`: by default empty strings are not allowed; use `allowEmpty: true` to allow.
+- `optional: true`: variable can be absent; when present, it is still validated.
 
-## Opções
+## Options
 
 ```ts
 loadEnv(schema, {
-  dotenvPath: '.env', // caminho customizado
-  override: false     // se deve sobrescrever variáveis já setadas no processo
+  dotenvPath: '.env', // custom path
+  override: false     // whether to override already-set process variables
 });
 ```
 
-## Erros e mensagens
+## Errors and messages
 
-Em caso de falhas, um `AggregateError` é lançado contendo todas as inconsistências encontradas:
+If validation fails, an `AggregateError` is thrown containing all issues found:
 
 ```text
 Environment validation failed:
@@ -118,22 +117,22 @@ Environment validation failed:
 - Missing required env var: API_KEY
 ```
 
-Trate o erro no bootstrap da sua aplicação:
+Handle the error in your app bootstrap:
 
 ```ts
 try {
   const env = loadEnv(envSchema);
-  // start app...
+  // start app…
 } catch (e) {
   console.error(String(e));
   process.exit(1);
 }
 ```
 
-## Dicas de uso
+## Tips
 
-- Marque o array do schema com `as const` para melhor inferência de tipos.
-- Em apps ESM/TypeScript com `module: NodeNext`, use extensões `.js` nos imports compilados. Consumindo via npm, importe somente `validation-env`.
+- Mark the schema array with `as const` for better type inference.
+- In ESM/TypeScript apps with `module: NodeNext`, use `.js` extensions in compiled imports. When consuming from npm, just `import { loadEnv } from 'validation-env'`.
 
 ## API (TypeScript)
 
@@ -144,7 +143,7 @@ interface SchemaItem {
   name: string
   type: SupportedKind
   optional?: boolean
-  allowEmpty?: boolean // apenas para string
+  allowEmpty?: boolean // only for string
 }
 
 type Schema = readonly SchemaItem[]
