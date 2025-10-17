@@ -1,4 +1,5 @@
-import { EnvironmentManager } from './src/class/EnvironmentManager';
 
-//const env = new EnvironmentManager(['API_KEY', 'PROJECT_ID']);
-export { EnvironmentManager };
+export { loadEnv } from './src/loader.ts';
+export type { Schema, SchemaItem, EnvFromSchema, SupportedKind, LoadOptions } from './src/types.js';
+
+

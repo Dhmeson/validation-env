@@ -5,3 +5,5 @@ dist
 /github
 dockerfile
 .env
+env.schema.ts
+project.md
