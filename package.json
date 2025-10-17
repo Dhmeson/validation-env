@@ -1,18 +1,28 @@
 {
   "name": "validation-env",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "description": "Manages the environment variables necessary for the application. Loads environment  variables from the .env file and checks that all required variables are defined.",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "import": "./dist/main.js"
+    }
+  },
+  "files": [
+    "dist",
+    "readme.md"
+  ],
+  "sideEffects": false,
   "icon": "https://camo.githubusercontent.com/a4f8b1a99c71a7e5ef8bd3ec3dc310fbc68fd6138863bc16befdfe4756fafcba/68747470733a2f2f692e696d6775722e636f6d2f426b785368494f2e6a706567",
   "repository": {
     "url": "https://github.com/Dhmeson/validation-env"
   },
   "scripts": {
     "build": "tsc",
-    "dev": "tsx watch ./main.ts",
-    "start": "node dist/main.js"
+    "prepublishOnly": "npm run build"
   },
   "engines": {
     "node": ">=20.0.0",
@@ -27,6 +37,11 @@
   ],
   "author": "Dhmeson Noronha Araujo",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+
+  },
   "devDependencies": {
     "tsx": "^4.16.2",
     "typescript": "^5.9.3",
@@ -36,4 +51,5 @@
   "dependencies": {
     "dotenv": "^17.2.3"
   }
+
 }
